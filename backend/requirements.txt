@@ -17,8 +17,8 @@ numpy==2.5.1
 
 requests==2.34.2
 
-httpx==0.28.1
 
 pydantic==2.13.4
+httpx==0.28.1
 
 typing_extensions==4.16.0

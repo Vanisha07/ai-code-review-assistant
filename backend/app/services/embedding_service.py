@@ -1,8 +1,6 @@
 from chromadb import PersistentClient
-from sentence_transformers import SentenceTransformer
 
-# Load embedding model once
-model = SentenceTransformer("all-MiniLM-L6-v2")
+from app.services.model_loader import get_model
 
 # Create/Open database
 client = PersistentClient(path="vector_db")
@@ -13,6 +11,8 @@ collection = client.get_or_create_collection(
 
 
 def store_embeddings(repo_name: str, documents):
+
+    model = get_model()
 
     ids = []
     embeddings = []

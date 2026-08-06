@@ -1,7 +1,6 @@
 from chromadb import PersistentClient
-from sentence_transformers import SentenceTransformer
 
-model = SentenceTransformer("all-MiniLM-L6-v2")
+from app.services.model_loader import get_model
 
 client = PersistentClient(path="vector_db")
 
@@ -9,6 +8,8 @@ collection = client.get_collection("repositories")
 
 
 def search_repository(repository: str, query: str, n_results: int = 5):
+
+    model = get_model()
 
     query_embedding = model.encode(query).tolist()
 
