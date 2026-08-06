@@ -14,16 +14,24 @@ router = APIRouter(
 @router.post("/index")
 def index_repository(request: IndexRepositoryRequest):
 
+    print("\n========== INDEX START ==========")
+
+    print("Step 1: Reading repository...")
     files = read_repository(request.repository)
-    print("FILES:", len(files))
-    print(files[:2])
+    print(f"Repository contains {len(files)} files")
+
+    print("Step 2: Splitting documents...")
     chunks = split_documents(files)
-    print("CHUNKS:", len(chunks))
-    print(chunks[:2])
+    print(f"Created {len(chunks)} chunks")
+
+    print("Step 3: Creating embeddings...")
     total = store_embeddings(
         request.repository,
         chunks,
     )
+
+    print(f"Stored {total} embeddings")
+    print("========== INDEX COMPLETE ==========\n")
 
     return {
         "repository": request.repository,

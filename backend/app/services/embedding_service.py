@@ -2,7 +2,6 @@ from chromadb import PersistentClient
 
 from app.services.model_loader import get_model
 
-# Create/Open database
 client = PersistentClient(path="vector_db")
 
 collection = client.get_or_create_collection(
@@ -12,12 +11,14 @@ collection = client.get_or_create_collection(
 
 def store_embeddings(repo_name: str, documents):
 
+    print("Loading model...")
     model = get_model()
 
     ids = []
-    embeddings = []
-    metadatas = []
     texts = []
+    metadatas = []
+
+    print("Preparing documents...")
 
     for doc in documents:
 
@@ -27,10 +28,6 @@ def store_embeddings(repo_name: str, documents):
 
         texts.append(doc["content"])
 
-        embeddings.append(
-            model.encode(doc["content"]).tolist()
-        )
-
         metadatas.append(
             {
                 "repository": repo_name,
@@ -39,11 +36,25 @@ def store_embeddings(repo_name: str, documents):
             }
         )
 
+    print(f"Encoding {len(texts)} chunks...")
+
+    embeddings = model.encode(
+        texts,
+        batch_size=32,
+        show_progress_bar=True,
+    ).tolist()
+
+    print("Encoding complete.")
+
+    print("Saving to ChromaDB...")
+
     collection.add(
         ids=ids,
         embeddings=embeddings,
         documents=texts,
         metadatas=metadatas,
     )
+
+    print("Embeddings stored successfully.")
 
     return len(ids)

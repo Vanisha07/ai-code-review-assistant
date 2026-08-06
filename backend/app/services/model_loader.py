@@ -8,6 +8,12 @@ def get_model():
         from sentence_transformers import SentenceTransformer
 
         print("Loading embedding model...")
-        _model = SentenceTransformer("all-MiniLM-L6-v2")
+
+        _model = SentenceTransformer(
+            "all-MiniLM-L6-v2",
+            device="cpu",
+        )
+
+        print("Embedding model loaded successfully.")
 
     return _model
