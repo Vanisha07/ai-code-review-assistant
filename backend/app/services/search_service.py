@@ -4,7 +4,7 @@ from app.services.model_loader import get_model
 
 client = PersistentClient(path="vector_db")
 
-collection = client.get_collection("repositories")
+collection = client.get_or_create_collection(name="repositories")
 
 
 def search_repository(repository: str, query: str, n_results: int = 5):
