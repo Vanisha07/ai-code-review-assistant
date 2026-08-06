@@ -1,0 +1,118 @@
+@import "tailwindcss";
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  background: #020617;
+  color: white;
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+button {
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+button:hover {
+  transform: translateY(-1px);
+}
+
+textarea,
+input {
+  color: white;
+  font-size: 15px;
+}
+
+textarea::placeholder,
+input::placeholder {
+  color: rgb(148 163 184);
+}
+
+pre {
+  overflow-x: auto;
+}
+
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(51 65 85);
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(15 23 42);
+}
+
+.prose {
+  color: #e2e8f0;
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4 {
+  color: #22d3ee;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.prose strong {
+  color: white;
+}
+
+.prose code {
+  color: #67e8f9;
+}
+
+.prose pre {
+  background: transparent;
+}
+
+.prose p {
+  line-height: 1.8;
+}
+
+.prose ul {
+  padding-left: 1.3rem;
+}
+
+.prose li {
+  margin: 0.45rem 0;
+}
+
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.prose th,
+.prose td {
+  border: 1px solid rgb(51 65 85);
+  padding: 10px;
+}
+
+.prose blockquote {
+  border-left: 4px solid cyan;
+  padding-left: 16px;
+  color: rgb(203 213 225);
+}
