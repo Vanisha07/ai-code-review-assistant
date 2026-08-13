@@ -8,8 +8,7 @@ __pycache__/
 # Cloned repositories
 backend/repositories/
 
-# ChromaDB
-backend/vector_db/
+
 
 # Node
 frontend/node_modules/

@@ -8,9 +8,11 @@ def read_repository(repo_name: str):
 
     repo_path = REPOSITORY_FOLDER / repo_name
 
+    print("Looking for repository at:", repo_path)
+
     if not repo_path.exists():
         raise FileNotFoundError("Repository not found.")
-
+    
     code_files = []
 
     extensions = {
