@@ -26,3 +26,5 @@ frontend/.env
 .DS_Store
 
 Thumbs.db
+# ChromaDB
+backend/vector_db/
